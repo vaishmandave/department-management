@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department List</title>
+</head>
+<body>
+    <h2>Department Management</h2>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+        {% for department in departments %}
+        <tr>
+            <td>{{ department.dept_id }}</td>
+            <td>{{ department.dept_name }}</td>
+            <td>{{ department.description }}</td>
+            <td>
+                {% if department.status %}
+                    Active
+                {% else %}
+                    Inactive
+                {% endif %}
+
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No departments available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+

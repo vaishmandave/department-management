@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Dashboard</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .btn { padding: 5px 10px; border: none; cursor: pointer; }
+        .btn-add { background-color: green; color: white; }
+        .btn-edit { background-color: orange; color: white; }
+        .btn-delete { background-color: red; color: white; }
+    </style>
+</head>
+<body>
+
+    <h2>Department Management</h2>
+
+    <!-- <button class="btn btn-add" onclick="window.location.href='{% url 'add_department' %}'">Create Department</button> -->
+
+    <!-- <button class="btn btn-add" onclick="window.location.href='{% url 'add_department' %}'">
+        Create Department
+    </button> -->
+
+    <a href="{% url 'add_department' %}" class="btn btn-add">Create Department</a>
+
+    
+
+    <table>
+        <tr>
+            <th>Sr.No</th>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for department in departments %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ department.dept_name }}</td>
+            <td>{{ department.description }}</td>
+            <td><a href="{% url 'edit_department' department.dept_id %}" class="btn btn-edit">Edit</a></td>
+            <td><a href="{% url 'delete_department' department.dept_id %}" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this department?');">Delete</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No departments available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

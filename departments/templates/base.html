@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Management</title>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'department_dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_department' %}">Add Department</a>
+    </nav>
+
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
